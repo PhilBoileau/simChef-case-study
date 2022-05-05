@@ -5,10 +5,10 @@
 tnp_fun <- function(tems) {
 
   # define the set of TEMs
-  true_nontems <- paste0("W", seq(from = 1, to = 50))
+  true_nontems <- paste0("W", seq(from = 51, to = 100))
 
   # compute the tpp
-  tnp <- 1 - sum(tems %in% true_nontems) / length(true_nontems)
+  tnp <- 1 - (sum(tems %in% true_nontems) / length(true_nontems))
 
   return(tnp)
 

@@ -13,13 +13,13 @@ aug_mod_cov_fun <- function(Y, A, W) {
     # add all squared terms to model
     form <- eval(paste(" ~ 1 + ", paste(colnames(df.x), collapse = " + ")))
     mm <- model.matrix(as.formula(form), data = df.x)
-    cvmod <- cv.glmnet(y = y, x = mm, nfolds = 10)
+    cvmod <- glmnet::cv.glmnet(y = y, x = mm, nfolds = 10)
     predictions <- predict(cvmod, newx = mm, s = "lambda.min")
     predictions
   }
 
   # apply the method
-  aug_mod_cov <- fit.subgroup(
+  aug_mod_cov <- personalized::fit.subgroup(
     x = W,
     y = Y,
     trt = A,

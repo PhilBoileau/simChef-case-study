@@ -8,7 +8,7 @@ mod_cov_fun <- function(Y, A, W) {
   propensity_func <- function(x, trt) 0.5
 
   # apply the method
-  mod_cov <- fit.subgroup(
+  mod_cov <- personalized::fit.subgroup(
     x = W,
     y = Y,
     trt = A,
