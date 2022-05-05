@@ -1,5 +1,5 @@
 ################################################################################
-# False Discovery Proportion Function Evaluator
+# False Discovery Rate Function Evaluator
 ################################################################################
 
 fdp_fun <- function(tems) {
