@@ -1,21 +1,23 @@
 ################################################################################
-# Data Generating Processes
+# Linear Model with Treatment Effect Modification
 ################################################################################
 
 # Input:
 #   n, an integer representing the number of observations to simulate
 #   cov_mat, a 100x100 covariance matrix of the covariates
 # Output:
-#   A tibble object containing 100 covariates, a binary treatment indicator,
+#   A list object containing 100 covariates, a binary treatment indicator,
 #   and the potential outcomes of n independently simulated observations in a
 #   perfect RCT.
-linear_dgp <- function(n, cov_mat = diag(1, nrow = 100)) {
+lm_tem_fun <- function(n) {
+
 
   # define the sparse coefficients vector for the main effects, and controls and
   # treatment interactions
   beta_main <- c(rep(2, 20), rep(0, 80))
   beta_0 <- rep(0, 100)
   beta_1 <- c(rep(5, 50), rep(0, 50))
+  cov_mat = diag(1, nrow = 100)
 
   # generate the biomarkers
   W <- MASS::mvrnorm(n = n, mu = rep(0, 100), Sigma = cov_mat)
@@ -36,13 +38,13 @@ linear_dgp <- function(n, cov_mat = diag(1, nrow = 100)) {
   Y <- ifelse(A == 0, Y_0, Y_1)
 
   # assembled into a tibble
-  sample_tbl <- tibble::tibble(
+  sample_list <- list(
     "Y" = Y,
+    "A" = A,
     "Y_1" = Y_1,
     "Y_0" = Y_0,
-    "A" = A
+    "W" = W
   )
-  sample_tbl <- dplyr::bind_cols(sample_tbl, W)
 
-  return(sim_data)
+  return(sample_list)
 }

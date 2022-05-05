@@ -30,6 +30,8 @@ unicate_fun <- function(Y, A, W) {
     dplyr::filter(p_value_bh <= 0.05) %>%
     dplyr::pull(biomarker)
 
+  # return the list of TEMs
+  tems <- list("tems" = tems)
   return(tems)
 
 }
