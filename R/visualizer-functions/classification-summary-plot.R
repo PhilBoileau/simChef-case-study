@@ -27,8 +27,8 @@ summary_plot_fun <- function(eval_results) {
 
   plt <- ggplot2::ggplot(comb_tbl) +
     ggplot2::aes(x = n, y = value, colour = as.factor(.method_name)) +
-    ggplot2::geom_point() +
-    ggplot2::geom_line() +
+    ggplot2::geom_point(alpha = 0.7) +
+    ggplot2::geom_line(alpha = 0.7) +
     ggplot2::facet_grid(cols = ggplot2::vars(.dgp_name),
                         rows = ggplot2::vars(metric)) +
     ggplot2::xlab("Sample Size") +
