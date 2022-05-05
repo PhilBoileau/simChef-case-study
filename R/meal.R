@@ -31,13 +31,15 @@ fdr_eval <- create_evaluator(.eval_fun = fdr_fun)
 source(here("R/visualizer-functions/fdr-plot.R"))
 fdr_plot <- create_visualizer(.viz_fun = fdr_plot_fun)
 
-# assemble the experiment
+# meal prep
 experiment <- create_experiment(name = "empirical-fdr-comparison") %>%
   add_dgp(linear_dgp, name = "LM with TEM") %>%
+  add_vary_across(.dgp = "LM with TEM", n = c(125, 250, 500)) %>%
   add_method(unicate_method, name = "uniCATE") %>%
   add_evaluator(fdr_eval, name = "Empirical FDR") %>%
   add_visualizer(fdr_plot, name = "Empirical FDR Plot")
 
-# run the experiment
+# put it in the oven
+set.seed(510)
 results <- experiment$run(n_reps = 10, save = TRUE)
 

@@ -41,8 +41,6 @@ lm_tem_fun <- function(n) {
   sample_list <- list(
     "Y" = Y,
     "A" = A,
-    "Y_1" = Y_1,
-    "Y_0" = Y_0,
     "W" = W
   )
 

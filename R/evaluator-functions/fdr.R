@@ -22,12 +22,13 @@ fdp_fun <- function(tems) {
 fdr_fun <- function(fit_results) {
 
   # compute the false discovery proportion
-  group_vars <- c(".dgp_name", ".method_name", ".n")
+  group_vars <- c(".dgp_name", ".method_name", "n")
   eval_out <- fit_results %>%
-    mutate(fdp = purrr::map(tems, fdp_fun)) %>%
+    mutate(fdp = purrr::map_dbl(tems, fdp_fun)) %>%
     dplyr::group_by(dplyr::across({{group_vars}})) %>%
     summarize(
-      fdr = mean(fdp)
+      fdr = mean(fdp),
+      .groups = "drop"
     )
 
   return(eval_out)
