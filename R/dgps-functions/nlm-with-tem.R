@@ -1,5 +1,5 @@
 ################################################################################
-# Linear Model with Treatment Effect Modification
+# Nonlinear Model with Treatment Effect Modification
 ################################################################################
 
 # Input:
@@ -9,12 +9,12 @@
 #   A list object containing 100 covariates, a binary treatment indicator,
 #   and the potential outcomes of n independently simulated observations in a
 #   perfect RCT.
-lm_tem_fun <- function(n = 125, cov_mat = diag(1, nrow = 100)) {
+nlm_tem_fun <- function(n = 125, cov_mat = diag(1, nrow = 100)) {
 
 
   # define the sparse coefficients vector for the main effects, and controls and
   # treatment interactions
-  beta_main <- c(rep(2, 20), rep(0, 80))
+  beta_main <- c(rep(1, 20), rep(0, 80))
   beta_0 <- rep(0, 100)
   beta_1 <- c(rep(5, 50), rep(0, 50))
 
@@ -29,7 +29,7 @@ lm_tem_fun <- function(n = 125, cov_mat = diag(1, nrow = 100)) {
   epsilon_0 <- rnorm(n = n, mean = 0, sd = 0.5)
   epsilon_1 <- rnorm(n = n, mean = 0, sd = 0.5)
   W_t <- t(W)
-  main_effects <- crossprod(W_t, beta_main)
+  main_effects <- rowSums(exp(abs(t((W_t * beta_main)))))
   Y_0 <- as.vector(main_effects + crossprod(W_t, beta_0) + epsilon_0)
   Y_1 <- as.vector(main_effects + crossprod(W_t, beta_1) + epsilon_1)
 
