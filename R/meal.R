@@ -10,6 +10,8 @@ library(MASS)
 library(sl3)
 library(ranger)
 library(glmnet)
+library(xgboost)
+library(polspline)
 library(uniCATE)
 library(personalized)
 library(ggplot2)
@@ -17,7 +19,7 @@ library(simChef)
 library(future)
 
 # set up parallelization
-plan(multisession, workers = 20L)
+plan(multissession, workers = 20L)
 
 # define the data-generating process objects
 source(here("R/dgps-functions/lm-with-tem.R"))
@@ -68,5 +70,5 @@ experiment <- create_experiment(name = "empirical-fdr-comparison") %>%
 
 # put it in the oven
 set.seed(510)
-results <- experiment$run(n_reps = 200, save = TRUE)
+results <- experiment$run(n_reps = 1, save = FALSE)
 

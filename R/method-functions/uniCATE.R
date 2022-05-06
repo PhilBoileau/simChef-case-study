@@ -18,30 +18,38 @@ unicate_fun <- function(Y, A, W, use_sl = FALSE) {
   if (use_sl) {
 
     # define the interactions
-    interactions <- lapply(biomarker_names, function(b) c(b, "A"))
+    interactions <- lapply(biomarker_names, function(b) c("A", b))
     lrnr_interactions <- sl3::Lrnr_define_interactions$new(interactions)
 
     # define the base learners
     lrnr_lasso <- sl3::make_learner(
-      sl3::Pipeline, lrnr_interactions, sl3::Lrnr_glmnet$new(alpha = 1)
+      sl3::Pipeline, lrnr_interactions, sl3::Lrnr_glmnet$new()
     )
     lrnr_enet <- sl3::make_learner(
-      sl3::Pipeline, lrnr_interactions, sl3::Lrnr_glmnet$new(alpha = 0,5)
+      sl3::Pipeline, lrnr_interactions, sl3::Lrnr_glmnet$new(alpha = 0.5)
     )
     lrnr_ridge <- sl3::make_learner(
       sl3::Pipeline, lrnr_interactions, sl3::Lrnr_glmnet$new(alpha = 0)
     )
-    lrnr_ranger <- sl3::make_learner(
+    lrnr_spline <- sl3::make_learner(
+      sl3::Pipeline, lrnr_interactions, sl3::Lrnr_polspline$new()
+    )
+    lrnr_rf <- sl3::make_learner(
       sl3::Pipeline, lrnr_interactions, sl3::Lrnr_ranger$new()
+    )
+    lrnr_xgboost <- sl3::Lrnr_xgboost$new()
+    lrnr_mean <- sl3::Lrnr_mean$new()
+
+    # assemble learners
+    learner_library <- sl3::make_learner(
+      sl3::Stack, lrnr_spline, lrnr_lasso, lrnr_enet, lrnr_ridge,
+      lrnr_xgboost, lrnr_rf, lrnr_mean
     )
 
     # assemble the super learner
     super_learner <- sl3::Lrnr_sl$new(
-      learners = sl3::make_learner(
-        sl3::Stack, lrnr_lasso, lrnr_enet, lrnr_ridge, lrnr_ranger,
-        sl3::Lrnr_mean$new()
-      ),
-      metalearner = sl3::make_learner(sl3::Lrnr_nnls)
+      learners = learner_library,
+      metalearner = make_learner(sl3::Lrnr_nnls)
     )
 
   } else {
@@ -56,7 +64,7 @@ unicate_fun <- function(Y, A, W, use_sl = FALSE) {
     covariates = biomarker_names,
     biomarkers = biomarker_names,
     propensity_score_ls = propensity_score_ls,
-    v_folds = 5,
+    v_folds = 5L,
     super_learner = super_learner
   )
 
