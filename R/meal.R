@@ -70,5 +70,5 @@ experiment <- create_experiment(name = "empirical-fdr-comparison") %>%
 
 # put it in the oven
 set.seed(510)
-results <- experiment$run(n_reps = 1, save = FALSE)
+results <- experiment$run(n_reps = 200, save = FALSE)
 
