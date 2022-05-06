@@ -58,7 +58,7 @@ experiment <- create_experiment(name = "empirical-fdr-comparison") %>%
   add_vary_across(.dgp = "Kinked with TEM", n = c(125, 250, 500)) %>%
   add_vary_across(.dgp = "NLM with TEM", n = c(125, 250, 500)) %>%
   add_method(unicate_lasso_method, name = "uniCATE (LASSO)") %>%
-  # add_method(unicate_sl_method, name = "uniCATE (SL)") %>%
+  add_method(unicate_sl_method, name = "uniCATE (SL)") %>%
   add_method(mod_cov_method, name = "Modified Covariates") %>%
   add_method(aug_mod_cov_method, name = "Augmented Modified Covariates") %>%
   add_evaluator(fdr_eval, name = "Empirical FDR") %>%
@@ -68,5 +68,5 @@ experiment <- create_experiment(name = "empirical-fdr-comparison") %>%
 
 # put it in the oven
 set.seed(510)
-results <- experiment$run(n_reps = , save = TRUE)
+results <- experiment$run(n_reps = 200, save = TRUE)
 
