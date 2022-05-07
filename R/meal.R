@@ -19,7 +19,7 @@ library(simChef)
 library(future)
 
 # set up parallelization
-plan(multisession, workers = 20L)
+plan(multisession, workers = 40L)
 
 # define the data-generating process objects
 source(here("R/dgps-functions/lm-with-tem.R"))

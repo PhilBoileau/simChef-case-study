@@ -6,19 +6,19 @@
 #SBATCH --account=co_biostat
 #
 # Quality of Service:
-#SBATCH --qos=biostat_savio2_normal
+#SBATCH --qos=biostat_savio3_normal
 #
 # Partition:
-#SBATCH --partition=savio2
+#SBATCH --partition=savio3
 #
-# Processors (1 node = 20 cores):
+# Processors (1 node = 40 cores):
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=20
+#SBATCH --cpus-per-task=40
 #SBATCH --exclusive
 #
 # Wall clock limit ('0' for unlimited):
-#SBATCH --time=96:00:00
+#SBATCH --time=24:00:00
 #
 # Mail type:
 #SBATCH --mail-type=all
