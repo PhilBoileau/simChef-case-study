@@ -49,7 +49,7 @@ unicate_fun <- function(Y, A, W, use_sl = FALSE) {
     # assemble the super learner
     super_learner <- sl3::Lrnr_sl$new(
       learners = learner_library,
-      metalearner = make_learner(sl3::Lrnr_nnls)
+      metalearner = sl3::make_learner(sl3::Lrnr_nnls)
     )
 
   } else {

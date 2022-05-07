@@ -19,7 +19,7 @@ library(simChef)
 library(future)
 
 # set up parallelization
-plan(multissession, workers = 20L)
+plan(multisession, workers = 20L)
 
 # define the data-generating process objects
 source(here("R/dgps-functions/lm-with-tem.R"))
@@ -70,5 +70,5 @@ experiment <- create_experiment(name = "empirical-fdr-comparison") %>%
 
 # put it in the oven
 set.seed(510)
-results <- experiment$run(n_reps = 200, save = FALSE)
+results <- experiment$run(n_reps = 200, save = TRUE)
 
