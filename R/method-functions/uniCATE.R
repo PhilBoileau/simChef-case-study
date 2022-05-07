@@ -37,13 +37,12 @@ unicate_fun <- function(Y, A, W, use_sl = FALSE) {
     lrnr_rf <- sl3::make_learner(
       sl3::Pipeline, lrnr_interactions, sl3::Lrnr_ranger$new()
     )
-    lrnr_xgboost <- sl3::Lrnr_xgboost$new()
     lrnr_mean <- sl3::Lrnr_mean$new()
 
     # assemble learners
     learner_library <- sl3::make_learner(
-      sl3::Stack, lrnr_spline, lrnr_lasso, lrnr_enet, lrnr_ridge,
-      lrnr_xgboost, lrnr_rf, lrnr_mean
+      sl3::Stack, lrnr_spline, lrnr_lasso, lrnr_enet, lrnr_ridge, lrnr_rf,
+      lrnr_mean
     )
 
     # assemble the super learner
