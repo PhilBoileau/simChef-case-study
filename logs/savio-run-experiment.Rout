@@ -55,14 +55,6 @@ The following object is masked from 'package:sl3':
 > library(glmnet)
 Loading required package: Matrix
 Loaded glmnet 4.1-2
-> library(xgboost)
-
-Attaching package: 'xgboost'
-
-The following object is masked from 'package:dplyr':
-
-    slice
-
 > library(polspline)
 > library(uniCATE)
 > library(personalized)
@@ -87,10 +79,6 @@ The following object is masked from 'package:ggplot2':
 
     last_plot
 
-The following object is masked from 'package:xgboost':
-
-    slice
-
 The following object is masked from 'package:MASS':
 
     select
@@ -108,7 +96,7 @@ The following object is masked from 'package:graphics':
 > library(future)
 > 
 > # set up parallelization
-> plan(multisession, workers = 20L)
+> plan(multisession, workers = 40L)
 > 
 > # define the data-generating process objects
 > source(here("R/dgps-functions/lm-with-tem.R"))
@@ -162,21 +150,21 @@ The following object is masked from 'package:graphics':
 > results <- experiment$run(n_reps = 200, save = TRUE)
 Fitting empirical-fdr-comparison...
 Saving fit results...
-Fit results saved | time taken: 0.385732 seconds
-200 reps completed (totals: 200/200) | time taken: 1193.856928 minutes
+Fit results saved | time taken: 0.325784 seconds
+200 reps completed (totals: 200/200) | time taken: 568.223081 minutes
 ==============================
 Evaluating empirical-fdr-comparison...
-Evaluation completed | time taken: 0.013918 minutes
+Evaluation completed | time taken: 0.007851 minutes
 Saving eval results...
-Eval results saved | time taken: 0.099764 seconds
+Eval results saved | time taken: 0.071036 seconds
 ==============================
 Visualizing empirical-fdr-comparison...
-Visualization completed | time taken: 0.001236 minutes
+Visualization completed | time taken: 0.000857 minutes
 Saving viz results...
-Viz results saved | time taken: 0.087197 seconds
+Viz results saved | time taken: 0.068782 seconds
 ==============================
 > 
 > 
 > proc.time()
      user    system   elapsed 
- 7215.124   133.350 71641.103 
+ 3353.026    67.025 34100.853 
