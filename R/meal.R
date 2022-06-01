@@ -33,7 +33,7 @@ source(here("R/method-functions/uniCATE.R"))
 source(here("R/method-functions/modified-covariates.R"))
 source(here("R/method-functions/augmented-modified-covariates.R"))
 unicate_lasso_method <- create_method(.method_fun = unicate_fun, use_sl = FALSE)
-unicate_sl_method <- create_method(.method_fun = unicate_fun, use_sl = TRUE)
+# unicate_sl_method <- create_method(.method_fun = unicate_fun, use_sl = TRUE)
 mod_cov_method <- create_method(.method_fun = mod_cov_fun)
 aug_mod_cov_method <- create_method(.method_fun = aug_mod_cov_fun)
 
@@ -58,8 +58,8 @@ experiment <- create_experiment(name = "empirical-fdr-comparison") %>%
   add_vary_across(.dgp = "LM with TEM", n = c(125, 250, 500)) %>%
   add_vary_across(.dgp = "Kinked with TEM", n = c(125, 250, 500)) %>%
   add_vary_across(.dgp = "NLM with TEM", n = c(125, 250, 500)) %>%
-  add_method(unicate_lasso_method, name = "uniCATE (LASSO)") %>%
-  add_method(unicate_sl_method, name = "uniCATE (SL)") %>%
+  add_method(unicate_lasso_method, name = "uniCATE") %>%
+  # add_method(unicate_sl_method, name = "uniCATE (SL)") %>%
   add_method(mod_cov_method, name = "Modified Covariates") %>%
   add_method(aug_mod_cov_method, name = "Augmented Modified Covariates") %>%
   add_evaluator(fdr_eval, name = "Empirical FDR") %>%

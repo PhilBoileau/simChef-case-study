@@ -16,7 +16,7 @@ nlm_tem_fun <- function(n = 125, cov_mat = diag(1, nrow = 100)) {
   # treatment interactions
   beta_main <- c(rep(1, 20), rep(0, 80))
   beta_0 <- rep(0, 100)
-  beta_1 <- c(rep(5, 50), rep(0, 50))
+  beta_1 <- c(rep(1, 50), rep(0, 50))
 
   # generate the biomarkers
   W <- MASS::mvrnorm(n = n, mu = rep(0, 100), Sigma = cov_mat)
