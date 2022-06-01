@@ -111,7 +111,7 @@ The following object is masked from 'package:graphics':
 > source(here("R/method-functions/modified-covariates.R"))
 > source(here("R/method-functions/augmented-modified-covariates.R"))
 > unicate_lasso_method <- create_method(.method_fun = unicate_fun, use_sl = FALSE)
-> unicate_sl_method <- create_method(.method_fun = unicate_fun, use_sl = TRUE)
+> # unicate_sl_method <- create_method(.method_fun = unicate_fun, use_sl = TRUE)
 > mod_cov_method <- create_method(.method_fun = mod_cov_fun)
 > aug_mod_cov_method <- create_method(.method_fun = aug_mod_cov_fun)
 > 
@@ -136,8 +136,8 @@ The following object is masked from 'package:graphics':
 +   add_vary_across(.dgp = "LM with TEM", n = c(125, 250, 500)) %>%
 +   add_vary_across(.dgp = "Kinked with TEM", n = c(125, 250, 500)) %>%
 +   add_vary_across(.dgp = "NLM with TEM", n = c(125, 250, 500)) %>%
-+   add_method(unicate_lasso_method, name = "uniCATE (LASSO)") %>%
-+   add_method(unicate_sl_method, name = "uniCATE (SL)") %>%
++   add_method(unicate_lasso_method, name = "uniCATE") %>%
++   # add_method(unicate_sl_method, name = "uniCATE (SL)") %>%
 +   add_method(mod_cov_method, name = "Modified Covariates") %>%
 +   add_method(aug_mod_cov_method, name = "Augmented Modified Covariates") %>%
 +   add_evaluator(fdr_eval, name = "Empirical FDR") %>%
@@ -150,21 +150,21 @@ The following object is masked from 'package:graphics':
 > results <- experiment$run(n_reps = 200, save = TRUE)
 Fitting empirical-fdr-comparison...
 Saving fit results...
-Fit results saved | time taken: 0.325784 seconds
-200 reps completed (totals: 200/200) | time taken: 568.223081 minutes
+Fit results saved | time taken: 0.381413 seconds
+200 reps completed (totals: 200/200) | time taken: 15.580548 minutes
 ==============================
 Evaluating empirical-fdr-comparison...
-Evaluation completed | time taken: 0.007851 minutes
+Evaluation completed | time taken: 0.006367 minutes
 Saving eval results...
-Eval results saved | time taken: 0.071036 seconds
+Eval results saved | time taken: 0.065481 seconds
 ==============================
 Visualizing empirical-fdr-comparison...
-Visualization completed | time taken: 0.000857 minutes
+Visualization completed | time taken: 0.000645 minutes
 Saving viz results...
-Viz results saved | time taken: 0.068782 seconds
+Viz results saved | time taken: 0.065587 seconds
 ==============================
 > 
 > 
 > proc.time()
-     user    system   elapsed 
- 3353.026    67.025 34100.853 
+   user  system elapsed 
+ 52.840   2.881 965.955 
