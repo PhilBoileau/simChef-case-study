@@ -7,10 +7,7 @@ library(here)
 library(dplyr)
 library(tibble)
 library(MASS)
-library(sl3)
-library(ranger)
 library(glmnet)
-library(polspline)
 library(uniCATE)
 library(personalized)
 library(ggplot2)
@@ -59,7 +56,7 @@ experiment <- create_experiment(name = "empirical-fdr-comparison") %>%
   add_vary_across(.dgp = "Kinked with TEM", n = c(125, 250, 500)) %>%
   add_vary_across(.dgp = "NLM with TEM", n = c(125, 250, 500)) %>%
   add_method(unicate_lasso_method, name = "uniCATE (LASSO)") %>%
-  add_method(unicate_sl_method, name = "uniCATE (SL)") %>%
+#   add_method(unicate_sl_method, name = "uniCATE (SL)") %>%
   add_method(mod_cov_method, name = "Modified Covariates") %>%
   add_method(aug_mod_cov_method, name = "Augmented Modified Covariates") %>%
   add_evaluator(fdr_eval, name = "Empirical FDR") %>%
