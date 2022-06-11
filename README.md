@@ -62,3 +62,10 @@ with the following BibTeX entry:
   year = {2022}
 }
 ```
+
+---
+
+&copy; 2022 [Philippe Boileau](https://pboileau.ca)
+
+The contents of this repository are distributed under the MIT license. See file
+`LICENSE` for details.
