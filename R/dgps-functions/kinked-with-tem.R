@@ -12,7 +12,7 @@
 kinked_tem_fun <- function(n = 125, cov_mat = diag(1, nrow = 100)) {
 
   # define the coefficients vector for controls and treatment interactions
-  beta_tem <- c(rep(2, 50), rep(0, 50))
+  beta_tem <- c(rep(10, 50), rep(0, 50))
 
   # generate the biomarkers
   W <- MASS::mvrnorm(n = n, mu = rep(0, 100), Sigma = cov_mat)
