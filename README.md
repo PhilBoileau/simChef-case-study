@@ -5,7 +5,9 @@ simulation framework to reproduce a portion of the simulation results presented
 in "[A flexible approach for predictive biomarker
 discovery](https://arxiv.org/abs/2205.01285)" by Boileau et al. The method
 presented in this preprint is implemented in the publicly available
-[`uniCATE`](https://insightsengineering.github.io/uniCATE/) `R` package.
+[`uniCATE`](https://insightsengineering.github.io/uniCATE/) `R` package and the
+original simulation results are available in the repository
+[`pub_uniCATE`](https://github.com/PhilBoileau/pub_uniCATE).
 
 ## Navigating the Repository
 
