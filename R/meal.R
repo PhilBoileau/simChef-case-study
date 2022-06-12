@@ -68,3 +68,5 @@ experiment <- create_experiment(name = "empirical-fdr-comparison") %>%
 set.seed(510)
 results <- experiment$run(n_reps = 200, save = TRUE)
 
+# pandoc must be available
+create_rmd(experiment, open = FALSE)
