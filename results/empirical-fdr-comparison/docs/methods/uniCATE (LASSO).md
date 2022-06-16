@@ -20,6 +20,14 @@ weight transformed outcomes. That is,
 where $g(a,W) = \mathbb{P}_{P}[A=a|W]$. Here, $P$ is omitted from the subscript
 of $g(a,W),\bar{Q}(A,W)$ to simplify notation.
 
+This cross-validated estimator estimates $\bar{Q}_0(A,W)$ on the training set
+using a LASSO regression that includes main and treatment-biomarker interaction
+terms. The simple linear regression coefficient of the $j\text{th}$ biomarker
+regressed on the difference in potential outcomes is then computed on the
+validation set using the estimate of $\bar{Q}_0(A,W)$. This procedure is
+repeated $K$ times, and the estimate is defined as the mean of the estimated
+slopes for each validation set.
+
 In a randomized control trial with known treatment assignment mechanism, this
 estimator is asymptotically normal about the true parameter with variance given
 by its efficient influence curve. Hypothesis testing is therefore possible

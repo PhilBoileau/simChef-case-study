@@ -99,10 +99,12 @@ biomarker is almost surely nonlinear, $\Psi^F(P_X)$ is a generally informative
 target of inference. Biomarkers with the largest absolute values in
 $\Psi^F(P_X)$ generally modify the effect of treatment the most.
 
-With assumptions of no unmeasured confounding and overlapping treatment support
-in which observations may be assigned to either treatment condition regardless
-of covariates, we have
-
+Unfortunately, we generally don't observe both $Y^{(0)}$ and $Y^{(1)}$ for any
+given random unit. We only observe $Y$. $P_X$ is censored by a treatment
+assignment mechanism; we can only interrogate parameters of the observed
+data-generating distribution $P_0$. Luckily, with assumptions of no unmeasured
+confounding and overlapping treatment support in which observations may be
+assigned to either treatment condition regardless of covariates, we have
 \begin{equation}
   \begin{split}
     \Psi_j(P_0)
@@ -112,9 +114,9 @@ of covariates, we have
     & = \Psi_j^F(P_X)
   \end{split}
 \end{equation}
-
 where $\bar{Q}_0(a, w) \equiv \mathbb{E}_{P_0}[Y|A = a, W = w]$ is the
-conditional expected outcome given treatment and covariates. It follows that
-$\Psi(P_0) = \Psi^F(P_X)$ in a randomized control trial.
+conditional expected outcome given treatment and covariates.
 
-The parameter $\Psi_j(P_0)$ provides a measure of predictive biomarker importance which is the target of the proposed method, uniCATE, described within.
+It follows that $\Psi(P_0) = \Psi^F(P_X)$ in a randomized control trial.
+$\Psi_j(P_0)$ therefore measures the full data predictive biomarker importance.
+We propose a method, uniCATE, to perform inference about this parameter.
