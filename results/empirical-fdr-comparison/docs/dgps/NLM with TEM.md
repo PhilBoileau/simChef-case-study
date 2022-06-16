@@ -1,4 +1,4 @@
-"NLM with TEM" Stands for "Nonlinear Model with Treatment Effect Modification".
+"NLM with TEM" stands for "Nonlinear Model with Treatment Effect Modification".
 Its generative model is as follows:
 \begin{equation}
   \begin{split}
@@ -13,3 +13,5 @@ Its generative model is as follows:
 where $\beta_1 = \ldots = \beta_{20} = 1$ and $\beta_{21} = \ldots =
 \beta_{100} = 0$, and where $\gamma_1 = \ldots = \gamma_{50} = 5$ and
 $\gamma_{51} = \ldots = \gamma_{100} = 0$.
+
+Again, 200 datasets are generated for each sample size: 125, 250 and 500.

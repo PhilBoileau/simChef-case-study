@@ -1,4 +1,4 @@
-"LM with TEM" Stands for "Linear Model with Treatment Effect Modification".
+"LM with TEM" stands for "Linear Model with Treatment Effect Modification".
 Its generative model is as follows:
 \begin{equation}
   \begin{split}
@@ -15,3 +15,6 @@ $\gamma^{(a)} = (\gamma_1^{(a)}, \ldots, \gamma_{100}^{(a)})^\top$ where
 $\gamma_1^{(1)} = \ldots = \gamma_{50}^{(1)} = 5$, $\gamma_1^{(0)} = \ldots =
 \gamma_{50}^{(0)} = 5$ and $\gamma_{51}^{(1)} = \ldots = \gamma_{100}^{(1)} =
 0$ for $a = \{0, 1\}$.
+
+Two hundred datasets each of 125, 250 and 500 observations are generated from
+this model.

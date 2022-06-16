@@ -1,4 +1,4 @@
-"Kinked with TEM" Stands for "Kinked Model with Treatment Effect Modification".
+"Kinked with TEM" stands for "Kinked Model with Treatment Effect Modification".
 Its generative model is as follows:
 \begin{equation}
   \begin{split}
@@ -14,3 +14,6 @@ where $\gamma = (\gamma_1, \ldots, \gamma_{100})$, $\gamma_{1} = \ldots
 = \gamma_{50} = 10$, $\gamma_{51} = \ldots = \gamma_{100} = 0$, and
 $\text{diag}(\cdot)$ is a diagonal matrix whose diagonal equals the
 input vector.
+
+As with the LM with TEM mode, 200 datasets of 125, 250 and 500
+observations are generated.
