@@ -31,5 +31,7 @@ slopes for each validation set.
 In a randomized control trial with known treatment assignment mechanism, this
 estimator is asymptotically normal about the true parameter with variance given
 by its efficient influence curve. Hypothesis testing is therefore possible
-through the use of Wald-type confidence intervals. For more information, see
-[(P. Boileau, et al.  2022)](https://arxiv.org/abs/2205.01285).
+through the use of Wald-type confidence intervals. We define the null
+hypothesis as $\Psi(P_0)=0$, and use an FDR cutoff of 5\% throughout the
+simulation study. For more information, see [(P. Boileau, et al.
+2022)](https://arxiv.org/abs/2205.01285).
